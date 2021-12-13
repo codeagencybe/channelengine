@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<data>
+		<!-- Form View Section -->
+		<record id="channel_process_import_export_from_more_view" model="ir.ui.view">
+			<field name="name">Process Import/Export</field>
+			<field name="model">channel.process.import.export</field>
+			<field name="priority">100</field>
+			<field name="arch" type="xml">
+				<form string="Import/Export">
+					<group >
+						<field name="instance_ids" widget="many2many_tags" domain="[('state','=','confirmed')]"
+							options="{'no_create':True,'no_create_edit': True}"  required="1"/>
+					</group>
+					<footer>
+						<button string="Prepare" class="oe_highlight" type="object" name="prepare_product_for_export" invisible="context.get('process','') != 'prepare_product_for_export'" />
+						<button string="Cancel" class="oe_highlight" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+	
+		<!-- Action Menu -->
+		<act_window id="channel_prepare_product_for_export_action"
+			name="Prepare Product For Export In Channel Engine"
+			res_model="channel.process.import.export" binding_model="product.template"
+			view_mode="form" target="new"
+			view_id="channel_process_import_export_from_more_view" context="{'process':'prepare_product_for_export'}" />
+	</data>
+</odoo>
