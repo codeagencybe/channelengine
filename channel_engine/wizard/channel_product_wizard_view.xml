@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+	<data>
+		
+		<!-- Form View Section -->
+		<!-- Export Products In Channel -->
+		<record id="channel_export_product_form_view" model="ir.ui.view">
+			<field name="name">channel.export.product.form</field>
+			<field name="model">channel.product.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Export Products In Channel Engine">
+					<group>
+						<!-- <field name="is_publish_in_channel" /> -->
+						<field name="is_export_or_update_stock" string="Export Stock"/>
+					</group>
+					<group>
+						<field name="is_export_or_update_price" string="Export Price"/>
+					</group>
+					
+					<footer>
+						<button name="export_product_in_channel" string="Export Products In Channel Engine"
+							type="object" class="oe_highlight" />
+						<button string="Cancel" class="oe_highlight" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+		
+		<!-- Update Products In Channel -->
+		<record id="channel_update_products_form_view" model="ir.ui.view">
+			<field name="name">channel.update.product.form</field>
+			<field name="model">channel.product.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Update Products In Channel Engine">
+					<footer>
+						<button name="update_products_in_channel" string="Update Products In Channel Engine"
+							type="object" class="oe_highlight" />
+						<button string="Cancel" class="oe_highlight" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+		
+		<!-- Update Product Stock In Channel -->
+		<record id="channel_update_product_stock_form_view" model="ir.ui.view">
+			<field name="name">channel.update.product.form</field>
+			<field name="model">channel.product.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Update Product Stock In Channel Engine">
+					<footer>
+						<button name="update_stock_in_channel" string="Update Stock" type="object" class="oe_highlight" />
+						<button string="Cancel" class="oe_highlight" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+		
+		<!-- Update Product Price In Channel -->
+		<record id="channel_update_product_price_form_view" model="ir.ui.view">
+			<field name="name">Update Product Price</field>
+			<field name="model">channel.product.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Update Product Price In Channel Engine">
+					<footer>
+						<button name="update_price_in_channel" string="Update Price" type="object" class="oe_highlight" />
+						<button string="Cancel" class="oe_highlight" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+		
+		<!-- Send Order Acknowledge(For NEW Order) In Channel Form View -->
+		<record id="channel_send_order_acknowledge_form_view" model="ir.ui.view">
+			<field name="name">Update Product Price</field>
+			<field name="model">channel.product.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Send Order Acknowledge In Channel Engine">
+					<footer>
+						<button name="send_order_acknowledge_in_channel" string="Send Order Ack." type="object" class="oe_highlight" />
+						<button string="Cancel" class="oe_highlight" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+		
+		<!-- Download CE Order's Packing Slip Form View -->
+		<record id="download_ce_dos_packing_slip_form_view" model="ir.ui.view">
+			<field name="name">Download CE DO's Packing Slip</field>
+			<field name="model">channel.product.wizard</field>
+			<field name="arch" type="xml">
+				<form string="Download CE DO's Packing Slip">
+					<footer>
+						<button name="download_ce_dos_packing_slip" string="Download Packing Slip" type="object" class="oe_highlight" />
+						<button string="Cancel" class="oe_highlight" special="cancel" />
+					</footer>
+				</form>
+			</field>
+		</record>
+		
+		
+		<!-- Action Menu -->
+		<!-- Export Products In Channel -->
+		<act_window id="channel_export_product_action" 
+			name="Export Products In Channel" res_model="channel.product.wizard"
+			binding_model="channel.product.template" view_mode="form"
+			target="new"
+			view_id="channel_export_product_form_view" />
+
+
+		<!-- Update Products In Channel -->
+		<act_window id="channel_update_product_action" 
+			name="Update Products In Channel" res_model="channel.product.wizard"
+			binding_model="channel.product.template" view_mode="form"
+			target="new"
+			view_id="channel_update_products_form_view" />
+
+			
+		<!-- Update Product Stock In Channel -->
+		<act_window id="channel_update_product_stock_action" 
+			name="Update Stock In Channel" res_model="channel.product.wizard"
+			binding_model="channel.product.product" view_mode="form"
+			target="new"
+			view_id="channel_update_product_stock_form_view" />
+			
+		<!-- Update Product Price In Channel -->
+		<act_window id="channel_update_product_price_action" name="Update Price In Channel" 
+			res_model="channel.product.wizard"
+			binding_model="channel.product.product" view_mode="form"
+			target="new"
+			view_id="channel_update_product_price_form_view" />
+			
+		<!-- Send Order Acknowledge(For NEW Order) In Channel -->
+		<act_window id="channel_send_order_acknowledge_action" name="Send Order Ack. In Channel" 
+			res_model="channel.product.wizard"
+			binding_model="sale.order" view_mode="form"
+			target="new"
+			view_id="channel_send_order_acknowledge_form_view" />
+			
+		<!-- Download DO's Packing Slip From Channel Engine -->
+		<act_window id="ce_download_dos_packing_slip" name="Download CE Packing Slip" 
+			res_model="channel.product.wizard"
+			binding_model="stock.picking" view_mode="form"
+			target="new"
+			view_id="download_ce_dos_packing_slip_form_view" />
+	</data>
+</odoo>
